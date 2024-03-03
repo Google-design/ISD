@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_Home"
+        android:icon="@drawable/baseline_home_24"
+        android:title="@string/home"
+        />
+    <item
+        android:id="@+id/navigation_Prayer_Times"
+        android:icon="@drawable/baseline_access_time_24"
+        android:title="@string/prayer_times" />
+    <item
+        android:id="@+id/navigation_Calendar"
+        android:icon="@drawable/baseline_calendar_month_24"
+        android:title="@string/calendar" />
+    <item
+        android:id="@+id/navigation_Notifications"
+        android:icon="@drawable/baseline_notifications_24"
+        android:title="@string/notifications" />
+    <item
+        android:id="@+id/navigation_videos"
+        android:icon="@drawable/baseline_ondemand_video_24"
+        android:title="@string/videos" />
+    <item
+        android:id="@+id/navigation_Settings"
+        android:icon="@drawable/baseline_settings_24"
+        android:title="@string/settings" />
+
+</menu>
