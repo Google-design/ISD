@@ -14,7 +14,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 
-class navigation_videos : Fragment() {
+class
+navigation_videos : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: YoutubeLinkAdapter

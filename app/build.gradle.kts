@@ -87,6 +87,7 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.6.2")
     implementation("com.squareup.retrofit2:converter-gson:2.6.2")
 
+    implementation ("com.facebook.shimmer:shimmer:0.5.0")
     //yt
 //    implementation ("com.google.android.gms:play-services-youtube:17.0.1")
 

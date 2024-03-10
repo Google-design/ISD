@@ -40,4 +40,9 @@
         android:name="com.isd.isd.navigation_videos"
         android:label="fragment_navigation_videos"
         tools:layout="@layout/fragment_navigation_videos" />
+    <fragment
+        android:id="@+id/navigation_Hadeeth"
+        android:name="com.isd.isd.Navigation_Hadeeth"
+        android:label="fragment_navigation__hadeeth"
+        tools:layout="@layout/fragment_navigation__hadeeth" />
 </navigation>

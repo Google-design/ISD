@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
@@ -19,6 +20,8 @@ class Navigation_Notifications : Fragment() {
     private lateinit var recyclerView: RecyclerView
 
 //    private lateinit var dataList : ArrayList<Data>
+
+
 
     private lateinit var headerList : ArrayList<String>
     private lateinit var descriptionList : ArrayList<String>
@@ -64,6 +67,8 @@ class Navigation_Notifications : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val ShimmerFrameLayout = view.findViewById<ShimmerFrameLayout>(R.id.shimmer_view_container4)
+
 //        recyclerView = view.findViewById(R.id.notif_recycler_view)
 //        recyclerView.layoutManager = LinearLayoutManager(requireActivity())
 //        recyclerView.setHasFixedSize(true)
@@ -86,6 +91,8 @@ class Navigation_Notifications : Fragment() {
             try {
                 val dataList = fetchNotifications()
                 adapter.updateList(dataList)
+                ShimmerFrameLayout.stopShimmer()
+                ShimmerFrameLayout.hideShimmer()
             } catch (error: Exception) {
                 // Handle error (e.g., log a message, display an error UI)
                 Log.e("ASD", "Error fetching notifications: $error")

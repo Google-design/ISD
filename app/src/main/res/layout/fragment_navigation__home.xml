@@ -18,6 +18,99 @@
             android:layout_height="match_parent"
             android:id="@+id/c2">
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/hadeeth_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="4dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmer_view_container1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/header_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Hadeeth of the day"
+                        android:textStyle="bold"
+                        android:padding="8dp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@android:color/darker_gray"/>
+
+                    <TextView
+                        android:id="@+id/hadeeth_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="‘Uthmān ibn ‘Affān (may Allah be pleased with him) reported that the Prophet (may Allah's peace and blessings be upon him) said: “The best of you are those who learn the Qur’an and teach it to others.”"
+                        android:textColor="@color/Bgreen"
+                        android:padding="8dp"/>
+
+                </LinearLayout>
+                </com.facebook.shimmer.ShimmerFrameLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <!--            <androidx.cardview.widget.CardView-->
+<!--                android:id="@+id/hadeeth_card"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="8dp"-->
+<!--                app:cardCornerRadius="4dp"-->
+<!--                app:cardElevation="4dp"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/header_tv"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="8dp"-->
+<!--                android:text="Hadeeth of the day"-->
+<!--                android:textStyle="bold"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--            <View-->
+<!--                android:id="@+id/line_hadeeth"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="1dp"-->
+<!--                android:background="@android:color/darker_gray"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/header_tv" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/hadeeth_tv"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="‘Uthmān ibn ‘Affān (may Allah be pleased with him) reported that the Prophet (may Allah's peace and blessings be upon him) said: “The best of you are those who learn the Qur’an and teach it to others.”"-->
+<!--                android:textColor="@color/Bgreen"-->
+<!--                android:padding="8dp"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/line_hadeeth"-->
+<!--                />-->
+
+<!--            </androidx.cardview.widget.CardView>-->
+
+
+
 
 
 
@@ -28,7 +121,7 @@
                     android:layout_margin="6dp"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="4dp"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/hadeeth_card"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent">
 

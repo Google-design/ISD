@@ -5,11 +5,18 @@
     android:layout_height="match_parent"
     tools:context=".Navigation_Notifications">
 
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view_container4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notif_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="12dp"
         />
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

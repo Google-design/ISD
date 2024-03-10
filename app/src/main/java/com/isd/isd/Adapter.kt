@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.facebook.shimmer.ShimmerFrameLayout
 
 class Adapter(private var dataList: ArrayList<Data1>): RecyclerView.Adapter<Adapter.ViewHolderClass>() {
 
@@ -40,6 +41,7 @@ class Adapter(private var dataList: ArrayList<Data1>): RecyclerView.Adapter<Adap
         val description: TextView = itemView.findViewById(R.id.description_tv)
         val date: TextView = itemView.findViewById(R.id.date_tv)
         val time: TextView = itemView.findViewById(R.id.time_tv)
+
 
     }
 }

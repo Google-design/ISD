@@ -19,12 +19,12 @@
         android:icon="@drawable/baseline_notifications_24"
         android:title="@string/notifications" />
     <item
-        android:id="@+id/navigation_videos"
-        android:icon="@drawable/baseline_ondemand_video_24"
-        android:title="@string/videos" />
-    <item
-        android:id="@+id/navigation_Settings"
-        android:icon="@drawable/baseline_settings_24"
-        android:title="@string/settings" />
+        android:id="@+id/navigation_Hadeeth"
+        android:icon="@drawable/hadeeth"
+        android:title="@string/hadeeth" />
+<!--    <item-->
+<!--        android:id="@+id/navigation_Settings"-->
+<!--        android:icon="@drawable/baseline_settings_24"-->
+<!--        android:title="@string/settings" />-->
 
 </menu>

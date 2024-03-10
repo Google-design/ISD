@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.activity.findViewTreeFullyDrawnReporterOwner
 import androidx.lifecycle.lifecycleScope
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,6 +20,7 @@ import java.util.Calendar
 class Navigation_Prayer_Times : Fragment() {
 
     private lateinit var countdownTimer: TextView
+    private lateinit var shimmerFrameLayout: ShimmerFrameLayout
     private var URL = "https://api.aladhan.com"
     private val TAG: String = "CHECK_RESPONSE"
     private lateinit var date: String
@@ -65,6 +67,8 @@ class Navigation_Prayer_Times : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        shimmerFrameLayout = view.findViewById(R.id.shimmer_view_container2)
+
         countdownTimer = view.findViewById(R.id.countdown_timer)
         fajradhan = view.findViewById(R.id.fajradhan)
         zuhradhan = view.findViewById(R.id.zuhradhan)
@@ -98,6 +102,8 @@ class Navigation_Prayer_Times : Fragment() {
                 getAdhanTimes {
                     Log.d(TAG, "Gotadhantimes")
                     getIqamaDataFromFirebase()
+
+
                 }
                 Log.d(TAG, "Run successful: iqamadata")
             }
@@ -155,7 +161,7 @@ class Navigation_Prayer_Times : Fragment() {
 //        startCountdown(remainingTime)
 
         Log.d("TAG1", "countdown started")
-        view.alpha = 0.5f
+        view.alpha = 0.7f
     }
 
     private fun startCountdown(timeInMillis: Long) {
@@ -216,6 +222,10 @@ class Navigation_Prayer_Times : Fragment() {
                                 addTimes(iqamaPeriod.isha.toString(), adhan.data.timings.Isha )
 
                             Log.d(TAG, "Parse done")
+
+                            shimmerFrameLayout.stopShimmer()
+                            shimmerFrameLayout.hideShimmer()
+
                             // Call getAdhanTimes() in callback if parsing is successful
                         }
                     } else {

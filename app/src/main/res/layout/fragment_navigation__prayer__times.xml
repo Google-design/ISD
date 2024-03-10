@@ -36,6 +36,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_view_container2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Card_constraint"
         android:layout_width="match_parent"
@@ -124,7 +129,7 @@
             android:layout_marginTop="70sp"
             android:layout_marginEnd="32dp"
             android:alpha="1"
-            android:text="5:56 am"
+            android:text="0:00 am"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -140,7 +145,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="40dp"
             android:alpha="1"
-            android:text="Zuhr"
+            android:text="Dhuhr"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -155,7 +160,7 @@
             android:layout_marginTop="40dp"
             android:layout_marginEnd="32dp"
             android:alpha="1"
-            android:text="1:00 pm"
+            android:text="0:00 pm"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -170,7 +175,7 @@
             android:layout_marginTop="40dp"
             android:layout_marginEnd="16dp"
             android:alpha="1"
-            android:text="1:00 pm"
+            android:text="0:00 pm"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -185,7 +190,7 @@
             android:layout_marginTop="40dp"
             android:layout_marginEnd="32dp"
             android:alpha="1"
-            android:text="1:00 pm"
+            android:text="0:00 pm"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -216,7 +221,7 @@
             android:layout_marginTop="40dp"
             android:layout_marginEnd="16dp"
             android:alpha="1"
-            android:text="5:56 am"
+            android:text="0:00 am"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -231,7 +236,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="32dp"
-            android:text="5:56 am"
+            android:text="0:00 am"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -259,7 +264,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="16dp"
-            android:text="5:56 am"
+            android:text="0:00 am"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -273,7 +278,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="32dp"
-            android:text="5:56 am"
+            android:text="0:00 am"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -301,7 +306,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="16dp"
-            android:text="5:56 am"
+            android:text="0:00 am"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -330,7 +335,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="40dp"
-            android:text="Jummah"
+            android:text="Jummah (ISD)"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -339,22 +344,83 @@
             app:layout_constraintTop_toBottomOf="@id/isha" />
 
         <TextView
+            android:id="@+id/ISD_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:text="1105 Greenlee St, Denton"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/jummah" />
+
+        <TextView
             android:id="@+id/jummahtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="16dp"
+            android:text="1:45 pm"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ishatime" />
+
+        <TextView
+            android:id="@+id/jummah_unt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="40dp"
+            android:text="Jummah (UNT)"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/jummah" />
+
+        <TextView
+            android:id="@+id/UNT_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="16dp"
+            android:text="Goolsby Chapel - 1622 Maple St, Denton"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/jummah_unt" />
+
+
+        <TextView
+            android:id="@+id/jummahtime_unt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="40dp"
-            android:text="5:56 am"
+            android:text="2:15pm"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.73"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ishatime" />
+            app:layout_constraintTop_toBottomOf="@id/jummahtime" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
 
     </androidx.cardview.widget.CardView>
 
