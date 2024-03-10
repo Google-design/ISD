@@ -67,7 +67,7 @@ class Navigation_Notifications : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val ShimmerFrameLayout = view.findViewById<ShimmerFrameLayout>(R.id.shimmer_view_container4)
+//        val ShimmerFrameLayout = view.findViewById<ShimmerFrameLayout>(R.id.shimmer_view_container4)
 
 //        recyclerView = view.findViewById(R.id.notif_recycler_view)
 //        recyclerView.layoutManager = LinearLayoutManager(requireActivity())
@@ -91,8 +91,8 @@ class Navigation_Notifications : Fragment() {
             try {
                 val dataList = fetchNotifications()
                 adapter.updateList(dataList)
-                ShimmerFrameLayout.stopShimmer()
-                ShimmerFrameLayout.hideShimmer()
+//                ShimmerFrameLayout.stopShimmer()
+//                ShimmerFrameLayout.hideShimmer()
             } catch (error: Exception) {
                 // Handle error (e.g., log a message, display an error UI)
                 Log.e("ASD", "Error fetching notifications: $error")

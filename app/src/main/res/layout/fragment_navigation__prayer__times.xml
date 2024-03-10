@@ -92,20 +92,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/Sunrise"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="40dp"
-            android:alpha="1"
-            android:text="Sunrise"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fajr" />
+<!--        <TextView-->
+<!--            android:id="@+id/Sunrise"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="40dp"-->
+<!--            android:alpha="1"-->
+<!--            android:text="Sunrise"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="18sp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/fajr" />-->
 
         <TextView
             android:id="@+id/fajrtime"
@@ -114,7 +114,7 @@
             android:layout_marginTop="70sp"
             android:layout_marginEnd="16dp"
             android:alpha="1"
-            android:text="5:56 am"
+            android:text="0:00 am"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -151,22 +151,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/Sunrise" />
+            app:layout_constraintTop_toBottomOf="@id/fajr" />
 
-        <TextView
-            android:id="@+id/Sunrisetime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="32dp"
-            android:alpha="1"
-            android:text="0:00 pm"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.73"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fajrtime" />
+<!--        <TextView-->
+<!--            android:id="@+id/Sunrisetime"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="40dp"-->
+<!--            android:layout_marginEnd="32dp"-->
+<!--            android:alpha="1"-->
+<!--            android:text="0:00 pm"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="18sp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.73"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/fajrtime" />-->
 
         <TextView
             android:id="@+id/zuhrtime"
@@ -181,8 +181,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/Sunrisetime" />
-
+            app:layout_constraintTop_toBottomOf="@id/fajrtime" />
         <TextView
             android:id="@+id/zuhradhan"
             android:layout_width="wrap_content"
@@ -196,7 +195,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.51"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/Sunrisetime" />
+            app:layout_constraintTop_toBottomOf="@id/fajradhan" />
 
 
         <TextView
