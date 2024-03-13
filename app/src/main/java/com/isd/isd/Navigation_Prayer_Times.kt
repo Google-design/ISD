@@ -12,6 +12,7 @@ import androidx.activity.findViewTreeFullyDrawnReporterOwner
 import androidx.lifecycle.lifecycleScope
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -48,6 +49,7 @@ class Navigation_Prayer_Times : Fragment() {
     private lateinit var maghribtime: TextView
     private lateinit var jummahtime: TextView
     private lateinit var ishatime: TextView
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -237,6 +239,8 @@ class Navigation_Prayer_Times : Fragment() {
                 }
         }
     }
+
+
 
     // Function to call getAdhanTimes() only after parsing is complete
     suspend fun getAdhanTimes(completionCallback: () -> Unit){

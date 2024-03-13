@@ -1,11 +1,15 @@
 package com.isd.isd
 
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import androidx.activity.ComponentActivity
 import com.isd.isd.databinding.ActivityMainBinding
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -15,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.isd.isd.ui.theme.ISDTheme
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
@@ -30,7 +35,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
 
-
         setContentView(R.layout.activity_main)
         FirebaseApp.initializeApp(this)
         actionBar?.hide()
@@ -41,6 +45,14 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
         bottomNavigationView.setupWithNavController(navController)
         subscribeToTopic()
+
+        if (!NotificationManagerCompat.from(this).areNotificationsEnabled()) {
+            // Prompt the user to enable notifications
+            showNotificationPermissionDialog()
+        }
+
+
+
 
 
 
@@ -73,20 +85,30 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
-}
+    private fun showNotificationPermissionDialog() {
+        val alertDialogBuilder = AlertDialog.Builder(this)
+        alertDialogBuilder.setTitle("Notification Permission Required")
+        alertDialogBuilder.setMessage("Please enable notifications to continue.")
+        alertDialogBuilder.setPositiveButton("Settings") { dialogInterface: DialogInterface, i: Int ->
+            // Open app notification settings
+            val intent = Intent().apply {
+                action = Settings.ACTION_APP_NOTIFICATION_SETTINGS
+                putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
+            }
+            startActivity(intent)
+            dialogInterface.dismiss()
+        }
+        alertDialogBuilder.setNegativeButton("Cancel") { dialogInterface: DialogInterface, _: Int ->
+            // Handle cancellation
+            dialogInterface.dismiss()
+            // Allow the app to be used
+            // You may handle this based on your app's requirements
+        }
+        alertDialogBuilder.setCancelable(false)
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
+    }
 
-//@Composable
-//fun Greeting(name: String, modifier: Modifier = Modifier) {
-//    Text(
-//        text = "Hello $name!",
-//        modifier = modifier
-//    )
-//}
-//
-//@Preview(showBackground = true)
-//@Composable
-//fun GreetingPreview() {
-//    ISDTheme {
-//        Greeting("Android")
-//    }
-//}
+
+
+}
