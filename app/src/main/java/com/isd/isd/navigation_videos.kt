@@ -32,8 +32,6 @@ navigation_videos : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_navigation_videos, container, false)
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,30 +45,6 @@ navigation_videos : Fragment() {
         lifecycleScope.launch {
             fetchYoutubeLinks()
         }
-
-//        val db = FirebaseFirestore.getInstance()
-//        val linkList = mutableListOf<String>()
-//        var youtubeCollection = db.collection("youtube")
-//
-//        var documentRef = youtubeCollection.document("link title")
-//
-//        youtubeCollection.get()
-//            .addOnSuccessListener { documents ->
-//                for (document in documents) {
-//                    val link = document.getString("link")
-//                    if (link != null) {
-//                        linkList.add(link)
-//                    } else {
-//                        println("Document ${document.id} doesn't contain a 'link' field.")
-//                    }
-//                }
-//
-//                println("All links: $linkList")
-//            }
-//            .addOnFailureListener { exception ->
-//                println("Error getting documents: $exception")
-//            }
-
         
     }
 
@@ -96,19 +70,6 @@ navigation_videos : Fragment() {
             }
         }
 
-//        youtubeCollection.get()
-//            .addOnSuccessListener { documents ->
-//                for (document in documents) {
-//                    val link = document.getString("link")
-//                    if (link != null) {
-//                        linkList.add(link) // Add link to the list
-//                    }
-//                }
-//                adapter.notifyDataSetChanged()
-//            }
-//            .addOnFailureListener { exception ->
-//                println("Error getting documents: $exception")
-//            }
     }
 
 

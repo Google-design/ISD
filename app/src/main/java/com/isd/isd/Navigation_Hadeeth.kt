@@ -34,9 +34,6 @@ class Navigation_Hadeeth : Fragment() {
         webView.settings.userAgentString = userAgent
 
         // Load the URL
-
-
-
         webView.loadUrl("https://sunnah.com/bukhari")
     }
 

@@ -1,10 +1,13 @@
 package com.isd.isd
 
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
+import kotlinx.coroutines.*
 import androidx.activity.ComponentActivity
 import com.isd.isd.databinding.ActivityMainBinding
 import androidx.activity.compose.setContent
@@ -28,12 +31,20 @@ import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.FirebaseApp
 import com.google.firebase.messaging.FirebaseMessaging
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ViewBinding
+    private lateinit var connectivityManager: ConnectivityManager
+    private val isConnectedFlow = MutableStateFlow(false)
+    private var job: Job? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        startNetworkMonitoring()
 
         setContentView(R.layout.activity_main)
         FirebaseApp.initializeApp(this)
@@ -50,24 +61,6 @@ class MainActivity : AppCompatActivity() {
             // Prompt the user to enable notifications
             showNotificationPermissionDialog()
         }
-
-
-
-
-
-
-        // Replace with the appropriate binding class for your layout
-//        setContent {
-//            ISDTheme {
-//                // A surface container using the 'background' color from the theme
-//                Surface(
-//                    modifier = Modifier.fillMaxSize(),
-//                    color = MaterialTheme.colorScheme.background
-//                ) {
-//                    Greeting("Android")
-//                }
-//            }
-//        }
     }
 
     fun subscribeToTopic() {
@@ -107,6 +100,50 @@ class MainActivity : AppCompatActivity() {
         alertDialogBuilder.setCancelable(false)
         val alertDialog = alertDialogBuilder.create()
         alertDialog.show()
+    }
+
+    private fun startNetworkMonitoring() {
+        job = CoroutineScope(Dispatchers.IO).launch {
+            while (true) {
+                val isConnected = isNetworkConnected()
+                isConnectedFlow.emit(isConnected)
+                delay(1000) // Check every second
+            }
+        }
+
+        // Observe network connectivity changes
+        CoroutineScope(Dispatchers.Main).launch {
+            isConnectedFlow
+                .collect { isConnected ->
+                    if (!isConnected) {
+                        // Inform the user when the phone is not connected to the internet
+                        // For example, you can show a toast message
+                        // Replace "this@MainActivity" with your activity reference
+                        // Replace "No Internet Connection" with your desired message
+                        showToast("No Internet Connection, please connect to the Internet")
+                    }
+                }
+        }
+    }
+
+    private fun isNetworkConnected(): Boolean {
+        val networkInfo = connectivityManager.activeNetworkInfo
+        return networkInfo != null && networkInfo.isConnected
+    }
+
+    private fun showToast(message: String) {
+        runOnUiThread {
+            // Show a toast message
+            // Replace "this@MainActivity" with your activity reference
+            // Replace "No Internet Connection" with your desired message
+            // Replace "Toast.LENGTH_SHORT" with your desired duration
+            android.widget.Toast.makeText(this@MainActivity, message, android.widget.Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        job?.cancel() // Cancel the coroutine job when activity is destroyed
     }
 
 

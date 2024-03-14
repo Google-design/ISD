@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -62,16 +63,17 @@ class Navigation_Home : Fragment() {
 
         hadeeth_tv = view.findViewById(R.id.hadeeth_tv)
 
-        shimmerFrameLayout= view.findViewById<ShimmerFrameLayout>(R.id.shimmer_view_container1)
+        val donateButton: Button = view.findViewById(R.id.donate_button)
+        donateButton.setOnClickListener {
+            val url = "https://www.dentonmosque.com/donate/"
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            startActivity(intent)
+        }
 
+        shimmerFrameLayout= view.findViewById<ShimmerFrameLayout>(R.id.shimmer_view_container1)
         shimmerFrameLayout.visibility = View.VISIBLE
         shimmerFrameLayout.startShimmer()
-//        shimmerFrameLayout.visibility = View.VISIBLE
-//        lifecycleScope.launch {
-//            shimmerFrameLayout.startShimmer()
-//        }
-
-
 
         lifecycleScope.launch(Dispatchers.IO) {
             try {
@@ -172,45 +174,4 @@ class Navigation_Home : Fragment() {
             }
         }
     }
-
-
-//    suspend fun getHadeeth(completionCallback: () -> Unit) {
-//
-//        Log.d(TAG, "$URL/api/v1/hadeeths/one/?language=en&id=$id_hadeeth")
-//        lifecycleScope.launch {
-//            try {
-//                val response =
-//                    HadeethInstance.h_api.getHadeeth("$URL/api/v1/hadeeths/one/?language=en&id=$id_hadeeth")
-//                if (response.isSuccessful) {
-//                    val Hadeeths = response.body()
-//                    hadeethData = response.body()!!
-//                    if (hadeethData != null) {
-//                        Log.d(TAG, "hadeeth retrieved")
-//                        if (Hadeeths != null) {
-//                            Log.i(TAG, "Hadeeth: ${Hadeeths.hadeeth.toString()}")
-//                            hadeeth_tv.text = Hadeeths.hadeeth.toString()
-//                        }
-//
-//
-//                        // Call the completion callback when Adhan data is retrieved
-//                        completionCallback()
-//                    } else {
-//                        Log.w(TAG, "Response body is null")
-//                    }
-//                } else {
-//                    Log.e(TAG, "API call failed: ${response.code()} ${response.message()}")
-//                    // Handle the error appropriately
-//                }
-//            } catch (e: Exception) {
-//                Log.e(TAG, "Error fetching Adhan data", e)
-//                // Handle generic exceptions
-//            }
-//
-//        }
-//
-//
-//
-//    }
-
-
 }
