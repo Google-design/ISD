@@ -1,10 +1,15 @@
 package com.isd.isd
 
+import android.app.DownloadManager
 import android.content.ContentValues.TAG
 import android.content.Intent
+import android.content.pm.ResolveInfo
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
+import android.text.SpannableString
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,6 +19,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.lifecycleScope
@@ -37,7 +43,7 @@ import com.facebook.shimmer.ShimmerFrameLayout
 
 class Navigation_Home : Fragment() {
 
-    private lateinit var hadeeth_tv : TextView
+    private lateinit var hadeeth_tv: TextView
     private lateinit var shimmerFrameLayout: ShimmerFrameLayout
     private var URL = "https://hadeethenc.com"
     private val TAG: String = "CHECK_RESPONSE"
@@ -60,6 +66,40 @@ class Navigation_Home : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val textView4 = view.findViewById<TextView>(R.id.textView4)
+        val addressText4 = "1105 Green Lee St Denton, TX 76201"
+
+        val text = addressText4
+        val spannableString = SpannableString(text)
+        val clickableSpan = object : ClickableSpan() {
+            override fun onClick(widget: View) {
+                // Create an intent to open Google Maps
+                val gmmIntentUri =   Uri.parse("geo:0,0?q=${Uri.encode(addressText4)}")
+                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                mapIntent.setPackage("com.google.android.apps.maps")
+
+                // Verify that the intent will resolve to an activity
+                if (mapIntent.resolveActivity(requireActivity().packageManager) != null) {
+                    startActivity(mapIntent)
+                } else {
+                    // Handle case where Google Maps app is not installed
+                    Toast.makeText(requireContext(), "Google Maps app not found", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+        // Set the clickable span to the text view
+        spannableString.setSpan(
+            clickableSpan,
+            0,
+            text.length,
+            SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        textView4.text = spannableString
+        textView4.movementMethod = LinkMovementMethod.getInstance()
+
+
 
         hadeeth_tv = view.findViewById(R.id.hadeeth_tv)
 

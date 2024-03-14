@@ -1,13 +1,19 @@
 package com.isd.isd
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.text.SpannableString
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.findViewTreeFullyDrawnReporterOwner
 import androidx.lifecycle.lifecycleScope
 import com.facebook.shimmer.ShimmerFrameLayout
@@ -85,6 +91,72 @@ class Navigation_Prayer_Times : Fragment() {
         maghribtime = view.findViewById(R.id.maghribtime)
         ishatime = view.findViewById(R.id.ishatime)
         jummahtime = view.findViewById(R.id.jummahtime)
+
+
+        val isdAddress = view.findViewById<TextView>(R.id.ISD_address)
+        val addressText4 = "1105 Greenlee St, Denton"
+
+        val text = addressText4
+        val spannableString = SpannableString(text)
+        val clickableSpan = object : ClickableSpan() {
+            override fun onClick(widget: View) {
+                // Create an intent to open Google Maps
+                val gmmIntentUri = Uri.parse("geo:0,0?q=${Uri.encode(addressText4)}")
+                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                mapIntent.setPackage("com.google.android.apps.maps")
+
+                // Verify that the intent will resolve to an activity
+                if (mapIntent.resolveActivity(requireActivity().packageManager) != null) {
+                    startActivity(mapIntent)
+                } else {
+                    // Handle case where Google Maps app is not installed
+                    Toast.makeText(requireContext(), "Google Maps app not found", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+        // Set the clickable span to the text view
+        spannableString.setSpan(
+            clickableSpan,
+            0,
+            text.length,
+            SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        isdAddress.text = spannableString
+        isdAddress.movementMethod = LinkMovementMethod.getInstance()
+
+        val UNT_Address = view.findViewById<TextView>(R.id.UNT_address)
+        val UNTaddressText = "Goolsby Chalpel, 1622 Maple St, Denton"
+
+        val text2 = UNTaddressText
+        val spannableString2 = SpannableString(text2)
+        val clickableSpan2 = object : ClickableSpan() {
+            override fun onClick(widget: View) {
+                // Create an intent to open Google Maps
+                val gmmIntentUri =   Uri.parse("geo:0,0?q=${Uri.encode(UNTaddressText)}")
+                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                mapIntent.setPackage("com.google.android.apps.maps")
+
+                // Verify that the intent will resolve to an activity
+                if (mapIntent.resolveActivity(requireActivity().packageManager) != null) {
+                    startActivity(mapIntent)
+                } else {
+                    // Handle case where Google Maps app is not installed
+                    Toast.makeText(requireContext(), "Google Maps app not found", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+        // Set the clickable span to the text view
+        spannableString2.setSpan(
+            clickableSpan2,
+            0,
+            text2.length,
+            SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        UNT_Address.text = spannableString2
+        UNT_Address.movementMethod = LinkMovementMethod.getInstance()
+
 
 
         // Launch coroutines for asynchronous tasks
