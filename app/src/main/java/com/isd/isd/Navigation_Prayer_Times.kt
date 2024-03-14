@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.SpannableString
+import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.util.Log

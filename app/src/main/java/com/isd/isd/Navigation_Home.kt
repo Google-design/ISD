@@ -7,7 +7,9 @@ import android.content.pm.ResolveInfo
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
+import android.text.Spannable
 import android.text.SpannableString
+import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.util.Log
@@ -68,7 +70,7 @@ class Navigation_Home : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val textView4 = view.findViewById<TextView>(R.id.textView4)
-        val addressText4 = "1105 Green Lee St Denton, TX 76201"
+        val addressText4 = "Address: 1105 Green Lee St Denton, TX 76201"
 
         val text = addressText4
         val spannableString = SpannableString(text)
@@ -92,14 +94,57 @@ class Navigation_Home : Fragment() {
         // Set the clickable span to the text view
         spannableString.setSpan(
             clickableSpan,
-            0,
+            9,
             text.length,
             SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
         )
         textView4.text = spannableString
         textView4.movementMethod = LinkMovementMethod.getInstance()
 
+        val textView5 = view.findViewById<TextView>(R.id.textView5)
+        val text5 = textView5.text
+        val spannableString5 = SpannableString(text5)
 
+        // Create ClickableSpan for the email address
+        val emailClickableSpan = object : ClickableSpan() {
+            override fun onClick(widget: View) {
+                // Handle email click event here
+                val emailIntent = Intent(Intent.ACTION_SENDTO)
+                emailIntent.data = Uri.parse("mailto:dentonmosque@gmail.com")
+                startActivity(emailIntent)
+            }
+        }
+
+        spannableString5.setSpan(
+            emailClickableSpan,
+            7,
+            29,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        textView5.text = spannableString5
+        textView5.movementMethod = LinkMovementMethod.getInstance()
+
+        // Create ClickableSpan for the phone number
+        val textView6 = view.findViewById<TextView>(R.id.textView6)
+        val text6 = textView6.text
+        val spannableString6 = SpannableString(text6)
+        val phoneClickableSpan = object : ClickableSpan() {
+            override fun onClick(widget: View) {
+                // Handle phone click event here
+                val phoneIntent = Intent(Intent.ACTION_DIAL)
+                phoneIntent.data = Uri.parse("tel:940-484-1871")
+                startActivity(phoneIntent)
+            }
+        }
+        // Adjust the start and end indices based on your text
+        spannableString6.setSpan(
+            phoneClickableSpan,
+            7, // Start index of the phone number
+            21, // End index of the phone number
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        textView6.text = spannableString6
+        textView6.movementMethod = LinkMovementMethod.getInstance()
 
         hadeeth_tv = view.findViewById(R.id.hadeeth_tv)
 
