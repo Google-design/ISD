@@ -1,5 +1,7 @@
 package com.isd.isd
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -16,6 +18,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.findViewTreeFullyDrawnReporterOwner
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.firebase.firestore.FirebaseFirestore
@@ -110,8 +113,13 @@ class Navigation_Prayer_Times : Fragment() {
                 if (mapIntent.resolveActivity(requireActivity().packageManager) != null) {
                     startActivity(mapIntent)
                 } else {
-                    // Handle case where Google Maps app is not installed
-                    Toast.makeText(requireContext(), "Google Maps app not found", Toast.LENGTH_SHORT).show()
+                    //Handling the exceptions
+                    val clipboard = ContextCompat.getSystemService(requireContext(), ClipboardManager::class.java)
+                    val clip = ClipData.newPlainText("address", addressText4)
+
+                    clipboard?.setPrimaryClip(clip)
+
+                    Toast.makeText(requireContext(), "Address copied to clipboard", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -138,12 +146,17 @@ class Navigation_Prayer_Times : Fragment() {
                 val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
                 mapIntent.setPackage("com.google.android.apps.maps")
 
-                // Verify that the intent will resolve to an activity
+//                 Verify that the intent will resolve to an activity
                 if (mapIntent.resolveActivity(requireActivity().packageManager) != null) {
                     startActivity(mapIntent)
                 } else {
                     // Handle case where Google Maps app is not installed
-                    Toast.makeText(requireContext(), "Google Maps app not found", Toast.LENGTH_SHORT).show()
+                    val clipboard = ContextCompat.getSystemService(requireContext(), ClipboardManager::class.java)
+                    val clip = ClipData.newPlainText("address", UNTaddressText)
+
+                    clipboard?.setPrimaryClip(clip)
+
+                    Toast.makeText(requireContext(), "Address copied to clipboard", Toast.LENGTH_SHORT).show()
                 }
             }
         }

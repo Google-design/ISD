@@ -1,10 +1,13 @@
 package com.isd.isd
 
 import android.app.DownloadManager
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.content.pm.ResolveInfo
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.text.Spannable
@@ -22,7 +25,9 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -71,7 +76,7 @@ class Navigation_Home : Fragment() {
 
         val textView4 = view.findViewById<TextView>(R.id.textView4)
         val addressText4 = "Address: 1105 Green Lee St Denton, TX 76201"
-
+        val onlyAddressText4 = "1105 Green Lee St Denton, TX 76201"
         val text = addressText4
         val spannableString = SpannableString(text)
         val clickableSpan = object : ClickableSpan() {
@@ -86,7 +91,12 @@ class Navigation_Home : Fragment() {
                     startActivity(mapIntent)
                 } else {
                     // Handle case where Google Maps app is not installed
-                    Toast.makeText(requireContext(), "Google Maps app not found", Toast.LENGTH_SHORT).show()
+                    val clipboard = ContextCompat.getSystemService(requireContext(), ClipboardManager::class.java)
+                    val clip = ClipData.newPlainText("address", onlyAddressText4)
+
+                    clipboard?.setPrimaryClip(clip)
+
+                    Toast.makeText(requireContext(), "Address copied to clipboard", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -110,8 +120,26 @@ class Navigation_Home : Fragment() {
             override fun onClick(widget: View) {
                 // Handle email click event here
                 val emailIntent = Intent(Intent.ACTION_SENDTO)
+                val email = "dentonmosque@gmail.com"
                 emailIntent.data = Uri.parse("mailto:dentonmosque@gmail.com")
-                startActivity(emailIntent)
+                if (emailIntent.resolveActivity(requireActivity().packageManager) != null) {
+                    startActivity(emailIntent)
+                } else {
+                    // Handle case where Google Maps app is not installed
+                    val clipboard = ContextCompat.getSystemService(
+                        requireContext(),
+                        ClipboardManager::class.java
+                    )
+                    val clip = ClipData.newPlainText("email", email)
+
+                    clipboard?.setPrimaryClip(clip)
+
+                    Toast.makeText(
+                        requireContext(),
+                        "Email copied to clipboard",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         }
 
@@ -132,8 +160,19 @@ class Navigation_Home : Fragment() {
             override fun onClick(widget: View) {
                 // Handle phone click event here
                 val phoneIntent = Intent(Intent.ACTION_DIAL)
+                val phoneNumeber = "940-484-1871"
                 phoneIntent.data = Uri.parse("tel:940-484-1871")
-                startActivity(phoneIntent)
+                if (phoneIntent.resolveActivity(requireActivity().packageManager) != null) {
+                    startActivity(phoneIntent)
+                } else {
+                    // Handle case where Google Maps app is not installed
+                    val clipboard = ContextCompat.getSystemService(requireContext(), ClipboardManager::class.java)
+                    val clip = ClipData.newPlainText("phone", phoneNumeber)
+
+                    clipboard?.setPrimaryClip(clip)
+
+                    Toast.makeText(requireContext(), "Phone number copied to clipboard", Toast.LENGTH_SHORT).show()
+                }
             }
         }
         // Adjust the start and end indices based on your text
