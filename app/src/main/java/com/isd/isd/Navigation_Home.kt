@@ -5,6 +5,9 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.ContentValues.TAG
 import android.content.Intent
+import android.content.Intent.CATEGORY_BROWSABLE
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
+import android.content.Intent.FLAG_ACTIVITY_REQUIRE_NON_BROWSER
 import android.content.pm.ResolveInfo
 import android.net.Uri
 import android.os.Build
@@ -124,8 +127,8 @@ class Navigation_Home : Fragment() {
                 emailIntent.data = Uri.parse("mailto:dentonmosque@gmail.com")
                 if (emailIntent.resolveActivity(requireActivity().packageManager) != null) {
                     startActivity(emailIntent)
-                } else {
-                    // Handle case where Google Maps app is not installed
+                }
+                else {
                     val clipboard = ContextCompat.getSystemService(
                         requireContext(),
                         ClipboardManager::class.java
@@ -164,7 +167,8 @@ class Navigation_Home : Fragment() {
                 phoneIntent.data = Uri.parse("tel:940-484-1871")
                 if (phoneIntent.resolveActivity(requireActivity().packageManager) != null) {
                     startActivity(phoneIntent)
-                } else {
+                }
+                else {
                     // Handle case where Google Maps app is not installed
                     val clipboard = ContextCompat.getSystemService(requireContext(), ClipboardManager::class.java)
                     val clip = ClipData.newPlainText("phone", phoneNumeber)
