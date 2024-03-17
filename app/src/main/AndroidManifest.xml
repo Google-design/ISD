@@ -40,6 +40,10 @@
 
     <queries>
         <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="*" />
+        </intent>
+        <intent>
             <action android:name="android.intent.action.DIAL" />
             <data android:scheme="*" />
         </intent>

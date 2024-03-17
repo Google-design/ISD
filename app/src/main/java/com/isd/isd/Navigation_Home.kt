@@ -85,7 +85,7 @@ class Navigation_Home : Fragment() {
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
                 // Create an intent to open Google Maps
-                val gmmIntentUri =   Uri.parse("geo:0,0?q=${Uri.encode(addressText4)}")
+                val gmmIntentUri =   Uri.parse("geo:0,0?q=${Uri.encode(onlyAddressText4)}")
                 val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
                 mapIntent.setPackage("com.google.android.apps.maps")
 
