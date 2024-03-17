@@ -59,6 +59,7 @@ class Navigation_Prayer_Times : Fragment() {
     private lateinit var maghribtime: TextView
     private lateinit var jummahtime: TextView
     private lateinit var ishatime: TextView
+    private lateinit var jummahtimeunt : TextView
 
 
 
@@ -95,6 +96,7 @@ class Navigation_Prayer_Times : Fragment() {
         maghribtime = view.findViewById(R.id.maghribtime)
         ishatime = view.findViewById(R.id.ishatime)
         jummahtime = view.findViewById(R.id.jummahtime)
+        jummahtimeunt = view.findViewById(R.id.jummahtime_unt)
 
 
         val isdAddress = view.findViewById<TextView>(R.id.ISD_address)
@@ -240,6 +242,8 @@ class Navigation_Prayer_Times : Fragment() {
                                 addTimes(iqamaPeriod.maghrib.toString(), maghribadhan.text.toString())
                             ishatime.text =
                                 addTimes(iqamaPeriod.isha.toString(), ishaadhan.text.toString() )
+                            jummahtime.text = iqamaPeriod.jummah.toString()
+                            jummahtimeunt.text = iqamaPeriod.jummahUNT.toString()
 
                             Log.d(TAG, "Parse done")
 
