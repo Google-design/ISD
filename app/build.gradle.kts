@@ -5,15 +5,15 @@ plugins {
 }
 
 android {
-    namespace = "com.isd.isd"
+    namespace = "com.isd.DentonMasjid"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.isd.isd"
+        applicationId = "com.isd.DentonMasjid"
         minSdk = 24
         targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.1"
 
 
         multiDexEnabled = true

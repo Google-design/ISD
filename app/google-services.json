@@ -7,9 +7,47 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:288828081945:android:ddcccd413638f7e3dfa788",
+        "android_client_info": {
+          "package_name": "com.isd.DentonMasjid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwkTSDbN5YZOn5pxTsixzYEmbgpwkA0WQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:288828081945:android:bd404d499babe120dfa788",
         "android_client_info": {
           "package_name": "com.isd.isd"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwkTSDbN5YZOn5pxTsixzYEmbgpwkA0WQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:288828081945:android:8a8a86cce790f87fdfa788",
+        "android_client_info": {
+          "package_name": "com.isd.isd_admin"
         }
       },
       "oauth_client": [],

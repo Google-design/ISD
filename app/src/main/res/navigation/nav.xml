@@ -7,42 +7,42 @@
 
     <activity
         android:id="@+id/mainActivity"
-        android:name="com.isd.isd.MainActivity"
+        android:name="com.isd.DentonMasjid.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
     <fragment
         android:id="@+id/navigation_Home"
-        android:name="com.isd.isd.Navigation_Home"
+        android:name="com.isd.DentonMasjid.Navigation_Home"
         android:label="fragment_navigation__home"
         tools:layout="@layout/fragment_navigation__home" />
     <fragment
         android:id="@+id/navigation_Settings"
-        android:name="com.isd.isd.Navigation_Settings"
+        android:name="com.isd.DentonMasjid.Navigation_Settings"
         android:label="fragment_navigation__settings"
         tools:layout="@layout/fragment_navigation__settings" />
     <fragment
         android:id="@+id/navigation_Prayer_Times"
-        android:name="com.isd.isd.Navigation_Prayer_Times"
+        android:name="com.isd.DentonMasjid.Navigation_Prayer_Times"
         android:label="fragment_navigation__prayer__times"
         tools:layout="@layout/fragment_navigation__prayer__times" />
     <fragment
         android:id="@+id/navigation_Calendar"
-        android:name="com.isd.isd.Navigation_Calendar"
+        android:name="com.isd.DentonMasjid.Navigation_Calendar"
         android:label="fragment_navigation__calendar"
         tools:layout="@layout/fragment_navigation__calendar" />
     <fragment
         android:id="@+id/navigation_Notifications"
-        android:name="com.isd.isd.Navigation_Notifications"
+        android:name="com.isd.DentonMasjid.Navigation_Notifications"
         android:label="fragment_navigation__notifications"
         tools:layout="@layout/fragment_navigation__notifications" />
     <fragment
         android:id="@+id/navigation_videos"
-        android:name="com.isd.isd.navigation_videos"
+        android:name="com.isd.DentonMasjid.navigation_videos"
         android:label="fragment_navigation_videos"
         tools:layout="@layout/fragment_navigation_videos" />
     <fragment
         android:id="@+id/navigation_Hadeeth"
-        android:name="com.isd.isd.Navigation_Hadeeth"
+        android:name="com.isd.DentonMasjid.Navigation_Hadeeth"
         android:label="fragment_navigation__hadeeth"
         tools:layout="@layout/fragment_navigation__hadeeth" />
 </navigation>
